@@ -6,16 +6,14 @@
 $(call inherit-product, device/xiaomi/sm8250-common/kona.mk)
 #$(call inherit-product, vendor/xiaomi/alioth/alioth-vendor.mk)
 
-#PRODUCT_SHIPPING_API_LEVEL := 30
+PRODUCT_SHIPPING_API_LEVEL := 30
 
 #Audio
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/xiaomi/alioth/audio,$(TARGET_COPY_OUT_VENDOR)/etc)
-
-#Init Recovery 
+ 
+#Init Recovery
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/recovery/root/init.recovery.qcom.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom.rc \
-     $(LOCAL_PATH)/recovery/root/init.recovery.qcom_decrypt.fbe.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom_decrypt.fbe.rc \
-     $(LOCAL_PATH)/recovery/root/init.recovery.qcom_decrypt.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom_decrypt.rc 
+     $(LOCAL_PATH)/recovery/root/init.recovery.qcom.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom.rc    
      
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -80,8 +78,9 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so
 
 PRODUCT_COPY_FILES += \
-    $(OUT_DIR)/target/product/alioth/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so 
-   
-# otacert
+    $(OUT_DIR)/target/product/alioth/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
+    
+# OEM otacert
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/releasekey
+    $(LOCAL_PATH)/security/releasekey  
+
